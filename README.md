@@ -1,4 +1,4 @@
-# OAuth 2.0 server example using Slim Framework
+# OAuth 2.0 Server example using Slim Framework
 
 This is an opinionated demo repository for OAuth 2.0 server implementation using Slim Framework and MySQL as the storage device.
 
