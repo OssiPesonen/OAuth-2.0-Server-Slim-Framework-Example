@@ -84,3 +84,15 @@ CREATE TABLE `oauth_scopes`
     COLLATE = utf8_swedish_ci;
 
 INSERT INTO oauth_clients (id, client_id, client_secret, redirect_uri, grant_types, scope, visibility) VALUES (1, 'test', '1234', 'http://localhost/oauth_callback', 'authorization_code', 'email', 'private');
+
+CREATE TABLE `oauth_authorized_clients`
+(
+    `id`        int(11)                             NOT NULL AUTO_INCREMENT,
+    `client_id` varchar(80) COLLATE utf8_swedish_ci NOT NULL,
+    `user_id`   varchar(80) COLLATE utf8_swedish_ci DEFAULT NULL,
+    PRIMARY KEY (`id`)
+)
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 19
+    DEFAULT CHARSET = utf8
+    COLLATE = utf8_swedish_ci;

@@ -47,10 +47,12 @@ class ScopeRepository implements ScopeRepositoryInterface
         ClientEntityInterface $clientEntity,
         $userIdentifier = null
     ) {
-        /**
-         * If $userIdentifier is provided, we fetch the users permissions and add to the 'scopes' permission values
-         *
-         */
+        # Extend admin:access to scopes when we identify this as Xerberus
+        if((int)$clientEntity->getAccountIdentifier() === getenv('XERBERUS_CLIENT_ID')) {
+            $scope = new ScopeEntity();
+            $scope->setIdentifier('admin:access');
+            $scopes[] = $scope;
+        }
 
         return $scopes;
     }

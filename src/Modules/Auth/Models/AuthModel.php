@@ -215,4 +215,30 @@ class AuthModel extends BaseModel
         }
         return $str;
     }
+
+
+    public function hasUserConsented(int $userId, string $clientId) {
+        $qb = new QueryBuilder($this->connection);
+
+        $query = $qb
+            ->select('id')
+            ->from('oauth_authorized_clients')
+            ->where('client_id = :client_id')
+            ->setParameter('client_id', $clientId)
+            ->andWhere('user_id = :user_id')
+            ->setParameter('user_id', $userId)
+            ->execute()
+            ->fetch();
+
+        return !empty($query['id']);
+    }
+
+    public function addClientAuthorization(int $userId, string $clientId) {
+        return $this->connection->insert('oauth_authorized_clients', [
+            'client_id' => $clientId,
+            'user_id' => $userId
+        ]);
+    }
+
+    # You should propably add a revoke method too
 }

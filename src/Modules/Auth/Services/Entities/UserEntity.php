@@ -7,10 +7,12 @@ use League\OAuth2\Server\Entities\UserEntityInterface;
 class UserEntity implements UserEntityInterface
 {
     private $id;
+    private $consented;
 
-    public function __construct(string $id)
+    public function __construct(string $id, bool $consented = false)
     {
         $this->id = $id;
+        $this->consented = $consented;
     }
 
     /**
@@ -21,5 +23,14 @@ class UserEntity implements UserEntityInterface
     public function getIdentifier()
     {
         return $this->id;
+    }
+
+    /**
+     * Check if user has previously given consent
+     *
+     * @return bool
+     */
+    public function hasUserConsented(): bool {
+        return $this->consented;
     }
 }

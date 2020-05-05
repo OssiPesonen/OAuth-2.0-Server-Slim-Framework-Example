@@ -11,7 +11,7 @@ This is an opinionated demo repository for OAuth 2.0 server implementation using
 5. Generate a random encryption key for JWT using `php -r 'echo base64_encode(random_bytes(32)), PHP_EOL;'` on your CLI and copy the result to your .env file's `ENCRYPTION_KEY` variable.
 6. Set up your database and import the `DatabaseTables.sql` or alter this to fit your own storage engine, but this needs to be supported by Doctrine DBAL and you might need to alter the `AuthModel.php` file.
 
-You can run the app quickly by executing `composer start` on your CLI tool.
+Access the app via your localhost address. Note, that while `composer start` will work on starting the app, it will not work for sessions that the Auth module needs to work.
 
 ## Try it out
 

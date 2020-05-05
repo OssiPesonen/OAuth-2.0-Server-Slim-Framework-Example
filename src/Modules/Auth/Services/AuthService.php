@@ -2,6 +2,7 @@
 
 namespace App\Modules\Auth\Services;
 
+use App\Modules\Auth\Models\AuthModel;
 use App\Modules\Auth\Services\Repositories\ClientRepository;
 use App\Modules\Auth\Services\Repositories\ScopeRepository;
 use App\Modules\Auth\Services\Repositories\AccessTokenRepository;
@@ -16,6 +17,11 @@ class AuthService {
     private $authCodeRepository;
     private $refreshTokenRepository;
     private $userRepository;
+
+    /**
+     * @var AuthModel
+     */
+    protected $authModel;
 
     /**
      * AuthService constructor.

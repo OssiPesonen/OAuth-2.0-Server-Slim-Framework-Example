@@ -34,7 +34,8 @@ class ClientRepository implements ClientRepositoryInterface
         if(!empty($client)) {
             $entity = new ClientEntity(
                 $client['client_id'],
-                $client['redirect_uri']
+                $client['redirect_uri'],
+                $client['account_id']
             );
 
             $entity->isConfidential();
